@@ -17,13 +17,13 @@ var express = require("express"),
     app.use(express.static('public'));
 
 app.get('/', function (req, res) {
-      res.send('Hello Sódel!');
+        res.send('It\'s Working!');
 });
 
 
 
 // http://192.168.0.XX:3000/cabeza
-app.post('/cabeza', function (req, res) {
+app.post('/reproducir', function (req, res) {
  console.log('>>>> Cabeza <<<<');
   var comando = "mpg123 Sonidos/biomedica/Normal-heart-sounds60bpm.mp3";
             cp.exec(comando, function (err, stdout, stderr) {
@@ -38,7 +38,7 @@ app.post('/cabeza', function (req, res) {
 
 
 // http://192.168.0.XX:3000/cabeza
-app.post('/corazon', function (req, res) {
+app.post('/', function (req, res) {
  console.log('>>>> Corazon <<<<');
   var comando = "mpg123 Sonidos/biomedica/Normal-heart-sounds60bpm.mp3";
             cp.exec(comando, function (err, stdout, stderr) {
