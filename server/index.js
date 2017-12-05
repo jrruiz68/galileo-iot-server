@@ -24,7 +24,7 @@ app.get('/', function (req, res) {
 
 // http://192.168.0.XX:3000/cabeza
 app.post('/reproducir', function (req, res) {
- console.log('>>>> Cabeza <<<<');
+ console.log('>>>> Reproduciendo <<<<');
   var comando = "mpg123 sonidos/sonidos-cardiacos/Aneurisma-Seno-Valsalva.mp3";
             cp.exec(comando, function (err, stdout, stderr) {
                 if (err) {
