@@ -25,7 +25,7 @@ app.get('/', function (req, res) {
 // http://192.168.0.XX:3000/cabeza
 app.post('/reproducir', function (req, res) {
  console.log('>>>> Cabeza <<<<');
-  var comando = "mpg123 Sonidos/biomedica/Normal-heart-sounds60bpm.mp3";
+  var comando = "mpg123 sonidos/sonidos-cardiacos/Aneurisma-Seno-Valsalva.mp3";
             cp.exec(comando, function (err, stdout, stderr) {
                 if (err) {
                     res.send(JSON.stringify({ output: stderr }));
