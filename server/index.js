@@ -54,9 +54,44 @@ app.post('/reproducir', function (req, res) {
 
 
 // http://192.168.0.XX:3000/cabeza
-app.post('/', function (req, res) {
- console.log('>>>> Corazon <<<<');
-  var comando = "mpg123 Sonidos/biomedica/Normal-heart-sounds60bpm.mp3";
+app.post('/detener', function (req, res) {
+ console.log('>>>> Deteniendo <<<<');
+  var cmdOptions = "-v";
+            cp.exec(cmdOptions, function (err, stdout, stderr) {
+                if (err) {
+                    res.send(JSON.stringify({ output: stderr }));
+                } else {
+                  console.log(stdout);
+                  res.send(JSON.stringify({ output: stderr}));
+                }
+            });
+            var comando = "q";
+                      cp.exec(comando, function (err, stdout, stderr) {
+                          if (err) {
+                              res.send(JSON.stringify({ output: stderr }));
+                          } else {
+                            console.log(stdout);
+                            res.send(JSON.stringify({ output: stderr}));
+                          }
+            });
+});
+
+app.post('/pausar', function (req, res) {
+ console.log('>>>> Deteniendo <<<<');
+  var comando = "pkill mpg123";
+            cp.exec(comando, function (err, stdout, stderr) {
+                if (err) {
+                    res.send(JSON.stringify({ output: stderr }));
+                } else {
+                  console.log(stdout);
+                  res.send(JSON.stringify({ output: stderr}));
+                }
+            });
+});
+
+app.post('/repetir', function (req, res) {
+ console.log('>>>> Deteniendo <<<<');
+  var comando = "pkill mpg123";
             cp.exec(comando, function (err, stdout, stderr) {
                 if (err) {
                     res.send(JSON.stringify({ output: stderr }));
