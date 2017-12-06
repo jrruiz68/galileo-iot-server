@@ -25,10 +25,24 @@ app.get('/', function (req, res) {
 
 
 
+app.post('/reproducir', function (req, res){
+  var itemId = req.body;
+  var comando = "mpg123 sonidos/sonidos-cardiacos/"+itemId;
+  cp.exec(comando, function (err, stdout, stderr) {
+      if (err) {
+          res.send(JSON.stringify({ output: stderr }));
+      } else {
+        console.log(stdout);
+        res.send(JSON.stringify({ output: stderr}));
+      }
+  });
+});
+
+
 // http://192.168.0.XX:3000/cabeza
-app.post('/reproducir', function (req, res) {
+/**app.post('/reproducir', function (req, res) {
  console.log('>>>> Reproduciendo <<<<');
-  var selectedItemId = req.bodyParser.id;
+  var selectedItemId = req.body.id;
   var comando = "mpg123 sonidos/sonidos-cardiacos/"+selectedItemId;
             cp.exec(comando, function (err, stdout, stderr) {
                 if (err) {
@@ -38,7 +52,7 @@ app.post('/reproducir', function (req, res) {
                   res.send(JSON.stringify({ output: stderr}));
                 }
             });
-});
+});*/
 
 
 // http://192.168.0.XX:3000/cabeza
