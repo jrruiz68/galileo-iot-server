@@ -9,10 +9,13 @@ var express = require("express"),
     fs = require("fs"),
     os = require("os");
 
+    // create application/json parser
+    var jsonParser = bodyParser.json()
 
-    var urlencodedParser = bodyParser.urlencoded({extended: false});
+    // create application/x-www-form-urlencoded parser
+    var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
     app.use(cors());
-
 
     app.use(express.static('public'));
 
@@ -25,6 +28,7 @@ app.get('/', function (req, res) {
 // http://192.168.0.XX:3000/cabeza
 app.post('/reproducir', function (req, res) {
  console.log('>>>> Reproduciendo <<<<');
+  var selectedItemId = red.body.idItem;
   var comando = "mpg123 sonidos/sonidos-cardiacos/Aneurisma-Seno-Valsalva.mp3";
             cp.exec(comando, function (err, stdout, stderr) {
                 if (err) {
