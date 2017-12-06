@@ -56,7 +56,7 @@ app.post('/reproducir', function (req, res) {
 // http://192.168.0.XX:3000/cabeza
 app.post('/detener', function (req, res) {
  console.log('>>>> Deteniendo <<<<');
-  var cmdOptions = "-v q";
+  var cmdOptions = "pkill mpg123";
             cp.exec(cmdOptions, function (err, stdout, stderr) {
                 if (err) {
                     res.send(JSON.stringify({ output: stderr }));
@@ -68,7 +68,7 @@ app.post('/detener', function (req, res) {
 });
 
 app.post('/pausar', function (req, res) {
- console.log('>>>> Deteniendo <<<<');
+ console.log('>>>> Pausando <<<<');
   var comando = "-v s";
             cp.exec(comando, function (err, stdout, stderr) {
                 if (err) {
@@ -81,7 +81,7 @@ app.post('/pausar', function (req, res) {
 });
 
 app.post('/repetir', function (req, res) {
- console.log('>>>> Deteniendo <<<<');
+ console.log('>>>> Repitiendo <<<<');
   var comando = "--loop -1 Aneurisma-Seno-Valsalva.mp3";
             cp.exec(comando, function (err, stdout, stderr) {
                 if (err) {
