@@ -28,8 +28,8 @@ app.get('/', function (req, res) {
 // http://192.168.0.XX:3000/cabeza
 app.post('/reproducir', function (req, res) {
  console.log('>>>> Reproduciendo <<<<');
-  var selectedItemId = red.body.idItem;
-  var comando = "mpg123 sonidos/sonidos-cardiacos/Aneurisma-Seno-Valsalva.mp3";
+  var selectedItemId = req.bodyParser.id;
+  var comando = "mpg123 sonidos/sonidos-cardiacos/"+selectedItemId;
             cp.exec(comando, function (err, stdout, stderr) {
                 if (err) {
                     res.send(JSON.stringify({ output: stderr }));
